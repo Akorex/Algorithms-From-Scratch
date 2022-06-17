@@ -1,2 +1,2 @@
 # ML-Algorithms-Neural-Networks-From-Scratch
-Implementation of ML algorithms, metrics and neural networks from scratch in python
+Implementation of Data Structures and Algorithms, ML algorithms, ML metrics and Neural Networks from scratch in python
