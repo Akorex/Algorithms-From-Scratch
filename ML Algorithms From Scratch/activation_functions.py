@@ -1,4 +1,3 @@
-from turtle import forward
 import numpy as np
 from math import exp as e
 
@@ -10,6 +9,12 @@ class ReLU:
 class Sigmoid:
     def forward(self, inputs):
         self.output = 1 / (1 + np.exp(-inputs))
+        return self.output
+
+class Softmax:
+    def forward(self, inputs):
+        exp_values = (np.exp(inputs) - np.max(inputs, axis=1, keepdims=True))
+        self.output = exp_values / np.sum(np.exp(inputs), axis=1, keepdims=True)
         return self.output
 
 
@@ -48,7 +53,7 @@ def sigmoid(x):
             x[i, j] = 1/ (e(temp) + 1)
     return x
 
-def softmax(x):
+def _softmax(x):
     """An implementation of the softmax activation function
     Expects x to be a rank-2 numpy tensor
     
@@ -63,13 +68,19 @@ def softmax(x):
             x[i, j] = e(x[i, j]) / sum(e(x))
     return x
 
-x = [[1, 2, -3, 4], [1, 0, 0, 4]]
-x = np.array(x)
-print(x)
 
-y = sigmoid(x)
-print(y)
+if __name__ == '__main__':
+    x = [[1, 2, -3, 4], [1, 0, 0, 4]]
+    x = np.array(x)
+    print(x)
+    
+    y = sigmoid(x)
+    print(y)
+    
+    s = Sigmoid()
+    y = s.forward(x)
+    print(y)
 
-s = Sigmoid()
-y = s.forward(x)
-print(y)
+    s = Softmax()
+    y = s.forward(x)
+    print(y)
