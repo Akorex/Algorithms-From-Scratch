@@ -14,6 +14,7 @@ def relu_2d(x):
     assert len(x.shape) == 2
     x = x.copy() # avoid overwriting tensor
 
+    x = x.astype(np.float32)
     for i in range(x.shape[0]):
         for j in range(x.shape[1]):
             x[i, j] = max(x[i, j], 0)
@@ -24,6 +25,7 @@ def relu_3d(x):
     assert len(x.shape) == 3
     x = x.copy()
 
+    x = x.astype(np.float32)
     for i in range(x.shape[0]):
         for j in range(x.shape[1]):
             for k in range(x.shape[2]):
@@ -40,6 +42,9 @@ def add_2d(x, y):
     assert x.shape == y.shape # x and y need to be sampe shape
 
     x = x.copy()
+    x = x.astype(np.float32)
+    y = y.astype(np.float32)
+    
     for i in range(x.shape[0]):
         for j in range(x.shape[1]):
             x[i, j] += y[i, j]
@@ -52,6 +57,9 @@ def add_3d(x, y):
     assert x.shape == y.shape
 
     x = x.copy()
+    x = x.astype(np.float32)
+    y = y.astype(np.float32)
+
     for i in range(x.shape[0]):
         for j in range(x.shape[1]):
             for k in range(x.shape[2]):
@@ -69,6 +77,8 @@ def add_matrix_vector(x, y):
     assert len(y.shape) == 1 # assert that y is a vector (1D array)
 
     x = x.copy()
+    x = x.astype(np.float32)
+    y = y.astype(np.float32)
 
     for i in range(x.shape[0]):
         for j in range(x.shape[1]):
@@ -84,6 +94,8 @@ def vector_dot(x, y):
     """
     assert len(x.shape) == 1
     assert len(y.shape) == 1
+    x = x.astype(np.float32)
+    y = y.astype(np.float32)
 
     z = 0
     for i in range(x.shape[0]):
@@ -98,6 +110,9 @@ def matrix_vector_dot(x, y):
     assert len(x.shape) == 2
     assert len(y.shape) == 1
     assert x.shape[1] == y.shape[0] # number of columns of first = rows of vector
+    x = x.astype(np.float32)
+    y = y.astype(np.float32)
+
     z = np.zeros(x.shape[0])
 
     for i in range(x.shape[0]):
@@ -115,6 +130,8 @@ def cross_product(x, y):
     assert len(x.shape) == 2
     assert len(y.shape) == 2
     assert x.shape[1] == y.shape[0]
+    x = x.astype(np.float32)
+    y = y.astype(np.float32)
 
     z = np.zeros((x.shape[0], y.shape[1]))
 
