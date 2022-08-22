@@ -4,6 +4,7 @@ import numpy as np
 from nnfs.datasets import spiral_data
 from activation_functions import ReLU, Softmax
 from dense_layer import Dense
+from loss import CategoricalCrossEntropy, SparseCategoricalCrossEntropy
 import nnfs 
 
 nnfs.init() # sets random seed to 0, creates a float32 dtype default
@@ -25,4 +26,10 @@ layer2_output = dense.forward(layer1_output)  # (100, 4)
 softmax = Softmax()
 dense = Dense(4, 3, softmax)
 layer3_output = dense.forward(layer2_output)
-print(layer3_output)
+print(layer3_output[:3])
+
+# loss function
+print(y.shape) # (300,)
+loss = SparseCategoricalCrossEntropy()
+loss_value = loss.calculate(layer3_output, y)
+print(loss_value)
