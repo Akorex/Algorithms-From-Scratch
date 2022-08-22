@@ -1,4 +1,9 @@
-"""This python code contains some operations with tensors implemented from scratch
+"""
+Author: Akorede Adewole, 2022.
+This python code contains some operations with tensors implemented from scratch.
+Numpy is used only when necessary.
+
+These implementations are only for learning & academic purposes.
 """
 import numpy as np
 
@@ -142,6 +147,28 @@ def cross_product(x, y):
             z[i, j] = vector_dot(row_x, column_y)
     return z
 
+def hadamard_product(x, y):
+    """Implementation of the hadamard product of two rank-2 arrays
+
+    Hadamard product of two matrices is defined as the element-wise multiplication of two matrices.
+    Opposed to dot product, it doesn't sum the dot product of the rows
+    Requires x.shape == y.shape just like the operation for add_2d above.
+    
+    Returns a numpy array of the same dimension as the input.
+    """
+    assert len(x.shape) == 2
+    if x.shape != y.shape:
+        raise ValueError("x and y must be the same shape")
+    
+    x = x.copy()
+    x = x.astype(np.float32)
+    y = y.astype(np.float32)
+
+    for i in range(x.shape[0]):
+        for j in range(x.shape[1]):
+            x[i, j] *= y[i, j]
+    return x
+
 
 
 if __name__ == '__main__':
@@ -176,3 +203,6 @@ if __name__ == '__main__':
     y = np.array(y)
     e = cross_product(x, y)
     print(e)
+
+    f = hadamard_product(x, y)
+    print(f)
