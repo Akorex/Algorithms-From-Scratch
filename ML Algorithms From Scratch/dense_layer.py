@@ -1,10 +1,22 @@
+"""
+Author: Akorede Adewole, 2022.
+
+This file contains implementation of the Dense layer for neural networks using numpy.
+In the tf_Dense class that follows, similar implementation is done using lower TensorFlow 
+code.
+
+Implementation only for academic purposes
+"""
+
 import numpy as np
 import nnfs
 from nnfs.datasets import spiral_data
 from activation_functions import ReLU
+import tensorflow as tf
 
 nnfs.init() # sets random seed to 0, creates a float32 dtype default
 
+# using only numpy
 class Dense:
     def __init__(self, n_inputs, n_neurons, activation):
         """Initialize the weights and biases of the Dense layer.
@@ -25,6 +37,23 @@ class Dense:
     def forward(self, inputs):
         self.output = self.activation.forward(np.dot(inputs, self.weights) + self.biases) # (inputs.shape[0], self.weights.shape[1])
         return self.output
+
+# using TensorFlow's API
+class tf_Dense:
+    def __init__(self, input_size, output_size, activation):
+        self.activation = activation
+        w_shape = (input_size, output_size)
+        w_initial_value = tf.random.uniform(w_shape, minval=0, maxval=1e-1) # inialize random weights
+        self.W = tf.Variable(w_initial_value)
+
+        b_shape = (output_size, )
+        b_initial_value = tf.zeros(b_shape)
+        self.b = tf.Variable(b_initial_value)
+    
+    def __call__(self, inputs):
+        return self.activation(tf.matmul(inputs, self.W) + self.b)
+
+
 
 if __name__ == '__main__':
     X, y = spiral_data(100, 3)

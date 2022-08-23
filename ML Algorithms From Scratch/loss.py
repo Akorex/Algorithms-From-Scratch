@@ -1,4 +1,14 @@
+"""
+Author: Akorede Adewole, 2022.
+
+Implementation of the loss functions for training a neural network using numpy. 
+The losses are named after their corresponding TensorFlow functions.
+
+A loss function written using TensorFlow is also provided.
+"""
+
 import numpy as np
+import tensorflow as tf
 
 class Loss:
     def calculate(self, output, y):
@@ -43,3 +53,17 @@ class SparseCategoricalCrossEntropy(Loss):
         correct_confidences = y_pred_clipped[range(samples), y_true]
         neg_log = -np.log(correct_confidences)
         return neg_log
+
+
+# implementing the loss function with mask in TensorFlow
+def loss_function(real, pred):
+    # create a loss object & compute it
+    loss_object = tf.keras.losses.SparseCategoricalEntropy(from_logits=True, reduction='none')
+    loss_ = loss_object(real, pred)
+    
+    # create a mask, cast to same type & multiply with loss
+    mask = tf.math.logical_not(tf.math.equal(real, 0))
+    mask = tf.cast(mask, dtype=loss_.dtype)
+    loss_ *= mask
+
+    return tf.reduce_sum(loss_)/tf.reduce_sum(mask)

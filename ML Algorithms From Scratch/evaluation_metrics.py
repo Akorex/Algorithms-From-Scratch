@@ -1,4 +1,10 @@
-"""This file contains implementation of ML metrics for classification and regression from scratch"""
+"""
+Author: Akorede Adewole, 2022.
+This file contains implementation of ML metrics for classification and regression from scratch
+The metrics are useful for metrics encountered with Tabular data.
+
+These implementations are for academic purposes only.
+"""
 import numpy as np
 
 #--------------- classification metrics -------------------------

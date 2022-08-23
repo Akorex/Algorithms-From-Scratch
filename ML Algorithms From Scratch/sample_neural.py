@@ -1,4 +1,7 @@
-"""Implementation of a simple neural network with user-defined functions"""
+"""
+Author: Akorede Adewole, 2022.
+Implementation of a simple neural network with user-defined functions
+"""
 
 import numpy as np
 from nnfs.datasets import spiral_data
