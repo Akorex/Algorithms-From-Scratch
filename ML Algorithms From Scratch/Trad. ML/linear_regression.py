@@ -8,7 +8,7 @@ import numpy as np
 class LinearRegression:
     def __init__(self, lr = 1e-2, n_iters=1000):
         self.lr = lr
-        self.n_iters = 1000
+        self.n_iters = n_iters
         self.weights = None
         self.bias = None
 
@@ -35,7 +35,7 @@ class LinearRegressionNormal:
     """Implements a linear regresssion using the normal equation"""
     def __init__(self, lr = 1e-2, n_iters = 1000):
         self.lr = lr
-        self.n_iters = 1000
+        self.n_iters = n_iters
         
 
     def fit(self, X, y):
