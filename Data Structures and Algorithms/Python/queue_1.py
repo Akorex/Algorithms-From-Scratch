@@ -3,6 +3,7 @@
 Improves queue.py on run-time efficiency
 """
 from stack import Empty
+from stack import ArrayStack
 
 class ArrayQueue:
     """An implementation of the FIFO ADT using a python list for underlying storage"""
@@ -73,6 +74,42 @@ class ArrayQueue:
         return f"Queue: {self._data[start: stop]}"
 
 
+# implement a queue using two stacks
+class MyQueue:
+    """Implementation of a FIFO ADT using two stacks"""
+    def __init__(self):
+        # initialize the stacks
+        self.s1 = ArrayStack() # old
+        self.s2 = ArrayStack() # new
+
+    def __len__(self):
+        return len(self.s1) + len(self.s2)
+
+    def is_empty(self):
+        return (self.s1.is_empty() and self.s2.is_empty())
+
+    def enqueue(self, e):
+        """Adds an element e to the back of the queue"""
+        self.s2.push(e)
+
+
+    def _shift_stacks(self):
+        """Nonpublic utility to move elements in the second stack to the first"""
+        if self.s1.is_empty():
+            while not self.s2.is_empty():
+                self.s1.push(self.s2.pop())
+
+    def dequeue(self):
+        """Remove an element from the front of a queue"""
+        self._shift_stacks() # move elements into old stack
+        return self.s1.pop()
+
+    def first(self):
+        """Return (but do not remove) an element at the front of a queue"""
+        self._shift_stacks()
+        return self.s1.top()
+
+
 if __name__ == '__main__':
     q = ArrayQueue()
     q.enqueue(1)
@@ -80,7 +117,19 @@ if __name__ == '__main__':
     q.enqueue(3)
     q.enqueue(4)
     print(len(q))
-    q.dequeue()
+    print(q.dequeue())
     print(q.is_empty())
     print(len(q))
     print(str(q))
+
+    print("\n")
+    q = MyQueue()
+    q.enqueue(1)
+    q.enqueue(2)
+    q.enqueue(3)
+    q.enqueue(4)
+    print(len(q))
+    print(q.dequeue())
+    print(q.is_empty())
+    print(len(q))
+    #print(str(q))
