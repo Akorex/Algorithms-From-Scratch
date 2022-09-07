@@ -132,4 +132,3 @@ if __name__ == '__main__':
     print(q.dequeue())
     print(q.is_empty())
     print(len(q))
-    #print(str(q))
