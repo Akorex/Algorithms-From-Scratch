@@ -35,8 +35,15 @@ class Dense:
         self.activation = activation
 
     def forward(self, inputs):
+        self.inputs = inputs
         self.output = self.activation.forward(np.dot(inputs, self.weights) + self.biases) # (inputs.shape[0], self.weights.shape[1])
         return self.output
+    
+    def backward(self, dvalues):
+        # gradients 
+        self.dweights = np.dot(self.inputs.T, dvalues)
+        self.dbiases = np.sum(dvalues, axis = 0, keepdims=True)
+        self.dinputs = np.dot(dvalues, self.weights.T)
 
 # using TensorFlow's API
 class tf_Dense:

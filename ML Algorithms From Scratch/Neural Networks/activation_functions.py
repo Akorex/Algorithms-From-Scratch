@@ -3,8 +3,13 @@ from math import exp as e
 
 class ReLU:
     def forward(self, inputs):
+        self.inputs = inputs
         self.output = np.maximum(inputs, 0)
         return self.output
+    
+    def backward(self, dvalues):
+        self.dinputs = dvalues.copy()
+        self.dinputs[self.inputs <= 0] = 0
 
 class Sigmoid:
     def forward(self, inputs):
