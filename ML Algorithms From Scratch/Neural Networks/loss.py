@@ -35,6 +35,12 @@ class CategoricalCrossEntropy(Loss):
         neg_log = -np.log(correct_confidences)
         return neg_log
 
+    def backward(self, dvalues, y_true):
+        samples = len(dvalues)
+        assert len(y_true.shape) == 2
+        self.dinputs = -y_true / dvalues
+        self.dinputs = self.dinputs/samples # normalize 
+
 
 class SparseCategoricalCrossEntropy(Loss):
     """This class is implemented for when the target is not one-hot encoded"""
@@ -53,6 +59,15 @@ class SparseCategoricalCrossEntropy(Loss):
         correct_confidences = y_pred_clipped[range(samples), y_true]
         neg_log = -np.log(correct_confidences)
         return neg_log
+
+    def backward(self, dvalues, y_true):
+        samples = len(dvalues)
+        labels = len(dvalues[0])
+        assert len(y_true.shape) == 1
+
+        y_true = np.eye(labels)[y_true] # to turn to a ohe vector
+        self.dinputs = -y_true/dvalues
+        self.dinputs = self.dinputs / samples
 
 
 # implementing the loss function with mask in TensorFlow
