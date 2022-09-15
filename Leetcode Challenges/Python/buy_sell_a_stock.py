@@ -21,3 +21,12 @@ class Solution:
                 
         profit = temp_max - min(prices)
         return profit
+
+# not very clear yet
+def maxProfit(prices: List[int]) -> int:
+    max_profit, min_price = 0, float('inf')
+    for price in prices:
+        min_price = min(min_price, price)
+        profit = price - min_price
+        max_profit = max(max_profit, profit)
+    return max_profit
