@@ -1,1 +1,1 @@
-This repository contains solutions to leetcode challenges
+This repository contains solutions to Leetcode and HackerRank challenges.
