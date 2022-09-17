@@ -5,6 +5,8 @@ Implements Linear Regression algorithm from scratch
 """
 import numpy as np
 
+
+np.random.seed(42) # for reproducibility
 class LinearRegression:
     def __init__(self, lr = 1e-2, n_iters=1000):
         self.lr = lr
