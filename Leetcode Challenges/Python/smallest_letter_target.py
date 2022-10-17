@@ -5,6 +5,7 @@ https://leetcode.com/problems/find-smallest-letter-greater-than-target/
 """
 
 from typing import List
+# initial approach
 class Solution:
     def nextGreatestLetter(self, letters: List[str], target: str) -> str:
         # if the target is out of bound
@@ -23,3 +24,11 @@ class Solution:
                 right = mid - 1
                 
         return letters[left]
+
+# another approach
+class Solution:
+    def nextGreatestLetter(self, letters: List[str], target: str) -> str:
+        for c in letters:
+            if c > target:
+                return c
+        return letters[0]
