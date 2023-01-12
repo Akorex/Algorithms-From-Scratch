@@ -10,7 +10,7 @@ import sys
 import os
 from datetime import date
 
-save_path = os.getcwd() + "\Billboard"
+save_path = os.getcwd() + "\mini projects\Billboard"
 today = date.today().strftime("%d %b, %Y")
 
 def query_user():
