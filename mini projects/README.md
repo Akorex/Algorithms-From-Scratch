@@ -1,0 +1,1 @@
+This directory contains small projects ranging from web scraping and other tasks.
