@@ -1,6 +1,6 @@
 """This is a python code which takes on a number of different tasks from the user
 
-and queries an API to provide the required respons
+and queries an API to provide the required response
 """
 
 import requests
