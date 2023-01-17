@@ -1,4 +1,5 @@
-"""A stack implementation that supports push, pop, top and retrieving the minimum
+"""
+A stack implementation that supports push, pop, top and retrieving the minimum
 element in constant time
 """
 class MinStack:
