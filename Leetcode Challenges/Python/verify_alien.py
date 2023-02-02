@@ -20,11 +20,11 @@ class Solution:
 # let's improve on it by using a hash map to store the counts of characters in a dictionary
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        ordered = {ch: i for i, ch in enumerate(order)}
-        prev = list(ordered[ch] for ch in words[0])
+        mapped = {ch: i for i, ch in enumerate(order)}
+        prev = list(mapped[ch] for ch in words[0])
 
         for i in range(1, len(words)):
-            curr = list(ordered[ch] for ch in words[i])
+            curr = list(mapped[ch] for ch in words[i])
             if curr < prev:
                 return False
             prev = curr
