@@ -104,6 +104,44 @@ def merge_sort2(S):
     return S
 
 
+def quick_sort(S):
+    if len(S) < 2:
+        return S
+    
+    pivot = S[len(S)//2]
+    smaller = [x for x in S if x < pivot]
+    middle = [x for x in S if x == pivot]
+    larger = [x for x in S if x > pivot]
+
+    return quick_sort(smaller) + middle + quick_sort(larger)
+
+
+def inplace_quick_sort(S, a, b):
+    """Sort the list from S[a] to S[b] inclusive using the quick sort algorithm"""
+    if a > b:
+        return
+    
+    pivot = S[b]
+    left = a
+    right = b-1
+
+    while left <= right:
+        while left <= right and  S[left] < pivot:
+            left += 1
+
+        while left <= right and pivot < S[right]:
+            right -= 1
+        
+        if left <= right:
+            S[left], S[right] = S[right], S[left]
+            left, right = left + 1, right - 1
+
+    S[left], S[b] = S[b], S[left]
+    inplace_quick_sort(S, a, left - 1)
+    inplace_quick_sort(S, left + 1, b)
+
+    return S
+
 if __name__ == '__main__':
     l = [2, 3, 4, 1, 0]
 
@@ -114,3 +152,8 @@ if __name__ == '__main__':
     print(merge_sort(l))
     print(merge_sort2(l))
 
+    l = [2, 3, 4, 1, 0]
+    print(quick_sort(l))
+
+    l = [2, 3, 4, 1, 0]
+    print(inplace_quick_sort(l, 0, len(l) - 1))
