@@ -1,5 +1,6 @@
 """An implementation of merge sort algorithm in python"""
 
+# the merge sort algorithm
 def merge_sort(S):
     """Returns a sorted array S using the merge - sort algorithm"""
     
@@ -41,7 +42,3 @@ def merge_sort(S):
     return S
 
 
-if __name__ == '__main__':
-    l = [2, 3, 4, 1, 0]
-
-    print(merge_sort(l))
