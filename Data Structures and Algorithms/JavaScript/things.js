@@ -22,6 +22,14 @@ console.log(power(2, 10));
 
 // apparently you can call a function in javascript above its declaration
 
+helloWorld();
+
+function helloWorld() {
+  console.log("Hello, world!");
+}
+
+
+
 // arrow functions
 
 const pow = (base, exponent) => {
@@ -61,6 +69,8 @@ Object.assign(objectA, {b: 3, c:4});
 console.log(objectA);
 console.log("coconuts".indexOf("o"));
 
+// rest
+
 function max(...numbers) {
     let result = -Infinity;
     for (let number of numbers){
@@ -74,6 +84,27 @@ let words = ['always', 'understand'];
 
 console.log("will", ...words, "it");
 
+// spread 
+
+arr1 = [2, 3, 4, 6];
+arr2 = [...arr1];
+console.log(arr2);
+
+arr3 = [1, 2, 3, 4];
+arr4 = [5, 6, 7, 8];
+arr5 = [...arr3, ...arr4];
+console.log(arr5);
+
+
+let multi = (x, y, z) => {
+    return x * y * z;
+}
+
+arr6 = [1, 2, 3];
+console.log(multi(...arr6));
+
+
+// math object
 function randomPointOnCircle(radius) {
     let angle = Math.random() * 2 * Math.PI;
     return {x: radius * Math.cos(angle), y: radius * Math.sin(angle)};
