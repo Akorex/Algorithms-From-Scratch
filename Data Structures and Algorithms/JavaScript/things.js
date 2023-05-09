@@ -51,6 +51,20 @@ function poww(base, exponent){
     }
 }
 
+
+// callbacks - illustration purpose only. doesn't need to be asynchronous
+function calculate(x, y, z, callback) {
+    sum = x + y +  z;
+    callback(sum);
+}
+
+calculate(1, 2, 4, () => {console.log(sum)});
+
+
+
+
+// Objects
+
 let day1 = {
     squirrel: false, 
     events: ["work", "touched tree", "pizza", "running"]
