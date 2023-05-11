@@ -212,3 +212,9 @@ try {
 } catch(error) {
     console.log("Something went wrong: " + error);
 }
+
+console.log(Array.from("floor"));
+
+let arrayish = {0: "map", 1: "dictionaries", length : 2}
+let array = Array.from(arrayish);
+console.log(array.map(s => s.toUpperCase()));
