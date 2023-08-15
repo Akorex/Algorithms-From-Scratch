@@ -1,0 +1,1 @@
+This is an implementation of the [Pathways Language Model (PaLM) model](https://arxiv.org/pdf/2204.02311.pdf) based on the transformer architecture released by Google. This implemetation was written in TensorFlow & Keras.
