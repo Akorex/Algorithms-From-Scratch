@@ -58,3 +58,14 @@ class ParallelTransformerBlock(layers.Layer):
 
         # pre layer-norm
         x = self.layer_norm(x)
+
+
+
+class PaLM(models.Model):
+    def __init__(self, d_model, num_tokens, depth, heads, ff_mult):
+        self.embedding_layer = layers.Embedding(num_tokens, d_model)
+
+
+    def __call__(self, x):
+        x = self.embedding_layer(x)
+        x = 
