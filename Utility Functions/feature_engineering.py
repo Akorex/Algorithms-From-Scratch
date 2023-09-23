@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 
+
 train = "A dataframe"
 # for Gender
 ohe = OneHotEncoder()

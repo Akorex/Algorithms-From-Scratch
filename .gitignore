@@ -2,3 +2,4 @@
 /Data Structures and Algorithms/Python/__pycache__
 *.o
 *.exe
+.vscode

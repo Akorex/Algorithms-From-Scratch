@@ -8,6 +8,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import seaborn as sns
+from pandas.api.types import is_datetime64_ns_dtype
 
 def missing_values_table(df):
     """Returns a dataframe of number of missing entries per column in df"""
@@ -21,6 +22,32 @@ def missing_values_table(df):
      # print some summary information
     print(f'The dataframe has {str(df.shape[1])} columns.\nThere are {str(miss_val_table.shape[0])} columns with missing values')
     return miss_val_table
+
+
+def reduce_mem_usage(df):
+    """iterate through all the numeric columns of a dataframe and modify
+    the data usage to reduce memory usage
+    """
+    for col in df.columns:
+        col_type = df[col].dtype
+        
+        if col_type != object and not is_datetime64_ns_dtype(df[col]) and not 'category':
+            c_min = df[col].min()
+            c_max = df[col].max()
+            
+            if str(col_type)[:3] == 'int':
+                if c_min > np.iinfo(np.int8).min and c_max < np.iinfo(np.int8).max:
+                    df[col] = df[col].astype(np.int8)
+                elif c_min > np.iinfo(np.int16) and c_max < np.iinfo(np.int16).max:
+                    df[col] = df[col].astype(np.int16)
+                elif c_min > np.iinfo(np.int32) and c_max < np.iinfo(np.int32).max:
+                    df[col] = df[col].astype(np.int32)
+            else:
+                df[col] = df[col].astype(np.float16)
+    return df
+
+
+
 
 # this function does the same as above but also includes datatypes
 def quality_report(df):
