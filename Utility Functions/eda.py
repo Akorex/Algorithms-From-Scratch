@@ -18,7 +18,7 @@ def missing_values_table(df):
     miss_val_table = miss_val_table.rename(columns={0:'Missing Values', 1: '% of Missing Values'})
     
     # sort by mssing values
-    miss_val_table = miss_val_table[miss_val_table.iloc[:,1] != 0].sort_values('% of Total Values', ascending=False).round(1)
+    miss_val_table = miss_val_table[miss_val_table.iloc[:,1] != 0].sort_values('% of Missing Values', ascending=False).round(1)
      # print some summary information
     print(f'The dataframe has {str(df.shape[1])} columns.\nThere are {str(miss_val_table.shape[0])} columns with missing values')
     return miss_val_table

@@ -17,6 +17,8 @@ and two three computation functions: which trains LGBM and XGBOOST classifiers w
 cross validation schemes as explained above and a simple model which trains an sklearn model with
 cross validation.
 """
+
+
 # import dependencies
 from lightgbm import LGBMClassifier
 import numpy as np
@@ -351,3 +353,23 @@ def train_model(model, X_train, y_train, X_valid, y_valid, n_splits=5):
     print(f"train recall: {recall}\t\t validation recall: {valid_recall}")
     print(f"train f1: {f1}\t\t validation f1: {valid_f1}")
     return metrics
+
+lgb_params = {    
+    'boosting_type':'gbdt',
+    'num_leaves':31,
+    'max_depth':4,
+    'learning_rate':0.01,
+    'n_estimators':100,
+    'subsample_for_bin':200000,
+    'min_child_weight':0.001,
+    'min_child_samples':20,
+    'subsample':0.6,
+#     'colsample_bytree':0.7,
+    'reg_alpha':0.05,
+    'reg_lambda':0.05,
+    'random_state':666
+             }
+
+
+m = lgb.LGBMClassifier(**lgb_params)
+m.fit(X,y)
