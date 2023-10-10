@@ -8,6 +8,9 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import seaborn as sns
+import random
+import os
+import torch
 from pandas.api.types import is_datetime64_ns_dtype
 
 def missing_values_table(df):
@@ -117,6 +120,18 @@ def kde_plot(df, col):
     plt.ylabel('Density')
     plt.legend()
     plt.tight_layout(h_pad = 2.5)
+
+
+def seed_everything(seed):
+    """Utility to set the random seed to a certain value"""
+    random.seed(seed)
+    np.random.seed(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    torch.manual_seed(seed)
+    if CFG.USE_GPU:
+        torch.cuda.manual_seed(seed)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
 
 """
 def Handling_Rare_Values(df,column,threshold): 
