@@ -17,6 +17,20 @@ class Solution:
             if nums[i - 1] == nums[i]:
                 ans.append(nums[i-1])
         return ans
+    
+# using a dictionary to store seen entries
+class Solution:
+    def findDuplicates(self, nums: List[int]) -> List[int]:
+        seen = {}
+
+        for num in nums:
+            if num not in seen:
+                seen[num] = 1
+            else:
+                seen[num] = 2
+
+        d = [key for key, value in seen.items() if value == 2]
+        return d
 
 # hash map  method
 class Solution:
