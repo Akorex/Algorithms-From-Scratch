@@ -30,3 +30,4 @@ def maxProfit(prices: List[int]) -> int:
         profit = price - min_price
         max_profit = max(max_profit, profit)
     return max_profit
+
