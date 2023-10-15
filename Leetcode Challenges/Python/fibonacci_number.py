@@ -6,7 +6,7 @@ such that each number is the sum of the two preceding ones, starting from 0 and 
 
 """
 
-# first approach
+# first approach - O(2^n) time complexity, O(n) space 
 class Solution:
     def fib(self, n: int) -> int:
         if n == 0:
