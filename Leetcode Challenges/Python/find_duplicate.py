@@ -4,6 +4,7 @@ Solution to Leetcode problem #287 - Find the Duplicate Number
 https://leetcode.com/problems/find-the-duplicate-number/
 
 Requires to not modifty the list & a constant space ops
+https://www.youtube.com/watch?v=iAe0GgyFrg4
 """
 
 from typing import List
