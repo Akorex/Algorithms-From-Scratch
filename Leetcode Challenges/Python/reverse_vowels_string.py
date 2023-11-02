@@ -1,3 +1,10 @@
+"""
+Solution to Leetcode problem #345 - Reverse the vowels of a string
+
+https://leetcode.com/problems/reverse-vowels-of-a-string/description/
+"""
+
+
 class Solution:
     def reverseVowels(self, s: str) -> str:
         l = list(s)
