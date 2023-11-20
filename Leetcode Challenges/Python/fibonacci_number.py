@@ -25,3 +25,14 @@ class Solution:
         if n not in self.dic:
             self.dic[n] = self.fib(n - 1) + self.fib(n - 2)
         return self.dic[n]
+    
+## another approach
+class Solution:
+    def __init__(self):
+        self.dic = {0: 0, 1: 1}
+
+    def fib(self, n: int) -> int:
+        for i in range(2, n + 1):
+            self.dic[i] = self.dic[i - 1] + self.dic[i - 2]
+        
+        return self.dic[n]
