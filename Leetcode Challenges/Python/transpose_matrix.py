@@ -21,3 +21,24 @@ class Solution:
             ans.append(row_x)
 
         return ans
+    
+## another approach
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        result = []
+        for i in range(len(matrix[0])):
+            result.append([row[i] for row in matrix])
+        return result
+        
+## another approach
+class Solution:
+    def transpose(self, matrix: List[List[int]]) -> List[List[int]]:
+        m = len(matrix)
+        n = len(matrix[0])
+        temp = [[0] * m for _ in range(n)]
+        
+        for i in range(m):
+            for j in range(n):
+                temp[j][i] = matrix[i][j]
+                
+        return temp
