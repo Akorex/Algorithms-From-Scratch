@@ -30,4 +30,4 @@ def mysqrt(x):
     left = int(left)
     return left
 
-print(mysqrt(25))
+print(mysqrt(2))
