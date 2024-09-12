@@ -20,7 +20,7 @@ class NumArray:
         return ans
 
 
-// prefix sum
+# prefix sum
 class NumArrayy:
 
     def __init__(self, nums: List[int]):
