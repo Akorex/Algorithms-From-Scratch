@@ -26,3 +26,31 @@ class Solutionn:
                 return idx
             nums[idx] = -nums[idx]
         return -1
+    
+
+# also works
+class Solutionnn:
+    def findDuplicate(self, nums: List[int]) -> int:
+        nums.sort()
+
+        left,right = 1, len(nums) - 1
+        while left < right:
+            mid = (left + right)//2
+            count = sum( num <= mid for num in nums)
+
+            if count > mid:
+                right = mid
+            else:
+                left = mid + 1
+
+        return left
+    
+# works but does not use constant extra space as required by the question
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        checker = set()
+
+        for num in nums:
+            if num in checker:
+                return num
+            checker.add(num)
