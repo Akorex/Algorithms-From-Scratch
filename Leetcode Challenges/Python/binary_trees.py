@@ -35,3 +35,6 @@ class BinaryTree(Tree):
             yield self.left(p)
         if self.right(p) is not None:
             yield self.right(p)
+            
+    def positions(self):
+        return self.inorder()

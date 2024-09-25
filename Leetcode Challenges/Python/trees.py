@@ -60,3 +60,51 @@ class Tree:
         if p is None:
             p = self.root()
         return self._height(p)
+    
+    def __iter__(self):
+        """Generate an iteration of the tree's elements"""
+        for p in self.positions():
+            yield p.element()
+
+    def preorder(self):
+        """Generate a preorder iteration of positions in the tree"""
+        if not self.is_empty():
+            for p in self._subtree_preorder(self.root()):
+                yield p
+
+    def _subtree_preorder(self, p):
+        yield p
+
+        for c in self.children(p):
+            for other in self._subtree_preorder(c):
+                yield other
+
+    def positions(self):
+        return self.preorder()
+    
+    def postorder(self):
+        if not self.is_empty():
+            for p in self._subtree_postorder(self.root()):
+                yield p
+
+    def _subtree_postorder(self, p):
+        for c in self.children(p):
+            for other in self._subtree_postorder(c):
+                yield other
+        yield p
+
+    def inorder(self):
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+
+    def _subtree_inorder(self, p):
+        if self.left(p) is not None:
+            for other in self._subtree_inorder(self.left(p)):
+                yield other
+        yield p
+
+        if self.right(p) is not None:
+            for other in self._subtree_inorder(self.right(p)):
+                yield other
+    
