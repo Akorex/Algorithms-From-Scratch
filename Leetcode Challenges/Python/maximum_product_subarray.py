@@ -44,3 +44,24 @@ class Solution:
             ans = max(ans, curr_max)
 
         return ans
+
+
+# optimized
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+
+        curr_max = nums[0]
+        curr_min = nums[0]
+        result = nums[0]
+
+        for i in range(1, len(nums)):
+            temp_max = max(nums[i], curr_max * nums[i], curr_min * nums[i])
+            curr_min = min(nums[i], curr_max * nums[i], curr_min * nums[i])
+            curr_max = temp_max
+
+            result = max(result, curr_max)
+
+        return result
