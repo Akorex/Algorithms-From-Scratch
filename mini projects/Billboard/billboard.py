@@ -10,7 +10,10 @@ import sys
 import os
 from datetime import date
 
-save_path = os.getcwd() + "\mini projects\Billboard"
+save_path = os.path.join(os.getcwd())
+
+# Ensure the directory exists
+os.makedirs(save_path, exist_ok=True)
 today = date.today().strftime("%d %b, %Y")
 
 def query_user():
