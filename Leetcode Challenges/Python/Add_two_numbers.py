@@ -3,7 +3,10 @@ Solution to Leetcode problem #2 - Add two numbers
 
 
 https://leetcode.com/problems/add-two-numbers/
+
 """
+
+from typing import Optional
 
 class ListNode:
     def __init__(self, val = 0, next = None):
