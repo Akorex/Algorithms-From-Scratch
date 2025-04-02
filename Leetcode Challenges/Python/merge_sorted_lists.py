@@ -29,7 +29,4 @@ class Solution:
             curr.next = list1 if list1 else list2
         return temp.next
 
-
-
-        return temp.next
         
