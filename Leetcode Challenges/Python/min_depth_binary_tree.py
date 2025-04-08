@@ -5,7 +5,7 @@ https://leetcode.com/problems/minimum-depth-of-binary-tree/description/
 
 """
 
-
+from typing import Optional
 
 # Definition for a binary tree node.
 class TreeNode:
